@@ -32,7 +32,6 @@ class Blocks extends Component {
     ));
 
   render() {
-    console.log(this.state);
     return (
       <div className="home_matches">{this.showMatches(this.state.matches)}</div>
     );
