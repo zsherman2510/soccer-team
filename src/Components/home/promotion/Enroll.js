@@ -46,7 +46,25 @@ class Enroll extends Component {
     console.log(newElement);
   }
 
-  submitForm() {}
+  submitForm(event) {
+    event.preventDefault();
+
+    let dataToSubmit = {};
+    let formIsValid = true;
+
+    for (let email in this.state.formdata) {
+      dataToSubmit[email] = this.state.formdata[email].value;
+      formIsValid = this.state.formdata[email].valid && formIsValid;
+    }
+
+    if (formIsValid) {
+      console.log(dataToSubmit);
+    } else {
+      this.setState({
+        formError: true
+      });
+    }
+  }
   render() {
     return (
       <Fade>
@@ -59,6 +77,12 @@ class Enroll extends Component {
                 formdata={this.state.formdata.email}
                 change={element => this.updateForm(element)}
               />
+              {this.state.formError ? (
+                <div className="error_label">
+                  Something is wrong, Try again.
+                </div>
+              ) : null}
+              <button onClick={event => this.submitForm(event)}>Enroll</button>
             </div>
           </form>
         </div>
