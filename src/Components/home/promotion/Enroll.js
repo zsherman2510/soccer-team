@@ -122,6 +122,9 @@ class Enroll extends Component {
               ) : null}
               <div className="success_label">{this.state.formSuccess}</div>
               <button onClick={event => this.submitForm(event)}>Enroll</button>
+              <div className="enroll_disclaimer">
+                This is a basic disclaimer.
+              </div>
             </div>
           </form>
         </div>
