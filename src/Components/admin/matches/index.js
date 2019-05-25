@@ -10,7 +10,7 @@ import Paper from "@material-ui/core/Paper";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { firebaseMatches } from "../../../firebase";
 import { firebaseLooper, reverseArray } from "../../utils/misc";
-import { spawn } from "child_process";
+
 class AdminMatches extends Component {
   state = {
     isLoading: true,
