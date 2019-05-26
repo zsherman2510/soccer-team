@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ListItem from "@material-ui/core/ListItem";
-import { firebase } from "../../../firebase";
+import { firebaseDB } from "../../../firebase";
 const AdminNav = () => {
   const links = [
     {
@@ -38,12 +38,12 @@ const AdminNav = () => {
     ));
 
   const logoutHandler = () => {
-    firebase
+    firebaseDB
       .auth()
       .signOut()
       .then(
         () => {
-          console.log("logout was successfull");
+          console.log("logout was successful");
         },
         error => {
           console.log("error logging out");
