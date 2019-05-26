@@ -218,6 +218,64 @@ class AddEditMatch extends Component {
       console.log(this.state);
     }
   }
+  successForm(message) {
+    this.setState({
+      formSuccess: message
+    });
+
+    setTimeout(() => {
+      this.setState({
+        formSuccess: ""
+      });
+    }, 2000);
+  }
+
+  submitForm(event) {
+    event.preventDefault();
+
+    let dataToSubmit = {};
+    let formIsValid = true;
+
+    for (let email in this.state.formdata) {
+      dataToSubmit[email] = this.state.formdata[email].value;
+      formIsValid = this.state.formdata[email].valid && formIsValid;
+    }
+    this.state.teams.forEach(team => {
+      if (team.shortName === dataToSubmit.local) {
+        dataToSubmit["localThmb"] = team.thmb;
+      }
+      if (team.shortName === dataToSubmit.away) {
+        dataToSubmit["awayThmb"] = team.thmb;
+      }
+    });
+
+    if (formIsValid) {
+      if (this.state.formType === "Edit Match") {
+        firebaseDB
+          .ref(`matches/${this.state.matchId}`)
+          .update(dataToSubmit)
+          .then(() => {
+            this.successForm("Update successful");
+          })
+          .catch(e => {
+            this.setState({ formError: true });
+          });
+      } else {
+        firebaseMatches
+          .push(dataToSubmit)
+          .then(() => {
+            this.props.history.push("/admin_matches");
+          })
+          .catch(e => {
+            this.setState({ formError: true });
+          });
+      }
+    } else {
+      this.setState({
+        formError: true
+      });
+    }
+  }
 
   componentDidMount() {
     const matchId = this.props.match.params.id;
@@ -236,7 +294,7 @@ class AddEditMatch extends Component {
       });
     };
     if (!matchId) {
-      ///Add match
+      getTeams(false, "Add Match");
     } else {
       firebaseDB
         .ref(`matches/${matchId}`)

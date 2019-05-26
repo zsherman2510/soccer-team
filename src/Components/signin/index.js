@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { firebaseDB } from "../../firebase";
+import { firebase } from "../../firebase";
 import FormField from "../utils/formFields";
 import { validate } from "../utils/misc";
 class SignIn extends Component {
@@ -67,7 +67,7 @@ class SignIn extends Component {
 
     if (formIsValid) {
       // check if the user is in the database by matching the email
-      firebaseDB
+      firebase
         .auth()
         .signInWithEmailAndPassword(dataToSubmit.email, dataToSubmit.password)
         .then(() => {
