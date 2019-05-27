@@ -30,7 +30,7 @@ const Routes = props => {
         />
         <PrivateRoute
           {...props}
-          path="/admin_players/add_player/:id"
+          path="/admin_players/add_players/:id"
           exact
           component={AddEditPlayers}
         />
