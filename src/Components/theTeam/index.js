@@ -73,10 +73,21 @@ class TheTeam extends Component {
               <div className="team_cards">
                 {this.showplayersByCategory("Keeper")}
               </div>
+              <div className="title">Defense</div>
+              <div className="team_cards">
+                {this.showplayersByCategory("Defence")}
+              </div>
+              <div className="title">MidField</div>
+              <div className="team_cards">
+                {this.showplayersByCategory("Midfield")}
+              </div>
+              <div className="title">Striker</div>
+              <div className="team_cards">
+                {this.showplayersByCategory("Striker")}
+              </div>
             </div>
           </div>
         ) : null}
-        <h1>team</h1>
       </div>
     );
   }
