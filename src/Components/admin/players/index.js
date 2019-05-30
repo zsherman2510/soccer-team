@@ -7,14 +7,19 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { firebasePlayers } from "../../../firebase";
-import { firebaseLooper, reverseArray } from "../../utils/misc";
+import { firebaseLooper } from "../../utils/misc";
 
 class AdminPlayers extends Component {
   state = {
     isLoading: true,
     players: []
+  };
+
+  handleDelete = () => {
+    console.log("delete button");
   };
 
   componentDidMount() {
@@ -23,7 +28,7 @@ class AdminPlayers extends Component {
 
       this.setState({
         isLoading: false,
-        players: reverseArray(players)
+        players
       });
     });
   }

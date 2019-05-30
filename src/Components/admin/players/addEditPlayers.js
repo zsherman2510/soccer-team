@@ -187,7 +187,7 @@ class AddEditPlayers extends Component {
       if (this.state.formType === "Edit Player") {
         firebaseDB
           .ref(`players/${this.state.playerId}`)
-          .update(dataToSubmit)
+          .update({ dataToSubmit })
           .then(() => {
             this.successForm("Update correctly");
           })

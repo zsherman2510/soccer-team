@@ -6,12 +6,14 @@ import PrivateRoute from "./Components/authRoutes/privateRoutes";
 import PublicRoute from "./Components/authRoutes/publicRoutes";
 import Home from "./Components/home";
 import SignIn from "./Components/signin";
+import TheTeam from "./Components/theTeam";
 
 import Dashboard from "./Components/admin/Dashboard";
 import AdminMatches from "./Components/admin/matches";
 import AddEditMatch from "./Components/admin/matches/addEditMatch";
 import AdminPlayers from "./Components/admin/players";
 import AddEditPlayers from "./Components/admin/players/addEditPlayers";
+
 const Routes = props => {
   return (
     <Layout>
@@ -65,6 +67,13 @@ const Routes = props => {
           exact
           path="/"
           component={Home}
+        />
+        <PublicRoute
+          {...props}
+          restricted={false}
+          exact
+          path="/the_team"
+          component={TheTeam}
         />
         <PublicRoute
           {...props}
