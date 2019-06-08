@@ -8,7 +8,7 @@ import Home from "./Components/home";
 import SignIn from "./Components/signin";
 import TheTeam from "./Components/theTeam";
 import TheMatches from "./Components/theMatches";
-
+import NotFound from "./Components/utils/notFound";
 import Dashboard from "./Components/admin/Dashboard";
 import AdminMatches from "./Components/admin/matches";
 import AddEditMatch from "./Components/admin/matches/addEditMatch";
@@ -90,6 +90,7 @@ const Routes = props => {
           component={SignIn}
           path="/sign_in"
         />
+        <PublicRoute {...props} restricted={true} component={NotFound} />
       </Switch>
     </Layout>
   );
